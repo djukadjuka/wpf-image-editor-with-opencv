@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CVImageEditor.LIB\CVImageEditor.LIB.csproj">
+      <Project>{f79c1cea-faf4-40bb-a51e-6b6a798a2b41}</Project>
+      <Name>CVImageEditor.LIB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,6 +5,17 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVImageEditor.WPF", "CVImageEditor.WPF\CVImageEditor.WPF.csproj", "{5B800793-A38B-47D3-9EEA-6F49FE9D3804}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVImageEditor.ConsoleApp", "CVImageEditor.ConsoleApp\CVImageEditor.ConsoleApp.csproj", "{4239CD85-E053-4E21-8B02-398C28737CB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVImageEditor.LIB", "CVImageEditor.LIB\CVImageEditor.LIB.csproj", "{F79C1CEA-FAF4-40BB-A51E-6B6A798A2B41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__Assets", "__Assets", "{B33BFA6C-B3B7-4F25-8C18-305C0C4EBB88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{A7E54402-6CE5-4FC1-AADC-FFCA43A9F5AA}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Milan\Desktop\JUNK\moja-slika.jpg = C:\Users\Milan\Desktop\JUNK\moja-slika.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +26,20 @@ Global
 		{5B800793-A38B-47D3-9EEA-6F49FE9D3804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B800793-A38B-47D3-9EEA-6F49FE9D3804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B800793-A38B-47D3-9EEA-6F49FE9D3804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4239CD85-E053-4E21-8B02-398C28737CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4239CD85-E053-4E21-8B02-398C28737CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4239CD85-E053-4E21-8B02-398C28737CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4239CD85-E053-4E21-8B02-398C28737CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79C1CEA-FAF4-40BB-A51E-6B6A798A2B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79C1CEA-FAF4-40BB-A51E-6B6A798A2B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79C1CEA-FAF4-40BB-A51E-6B6A798A2B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79C1CEA-FAF4-40BB-A51E-6B6A798A2B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7E54402-6CE5-4FC1-AADC-FFCA43A9F5AA} = {B33BFA6C-B3B7-4F25-8C18-305C0C4EBB88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E19993F8-5EF4-4931-9FF7-9FD7337F2B76}

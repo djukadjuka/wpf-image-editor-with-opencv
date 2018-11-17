@@ -10,6 +10,7 @@ namespace CVImageEditor.ConsoleApp
     {
         static void Main(string[] args)
         {
+            CVImageEditor.LIB.Core.Sandbox.Run();
         }
     }
 }
