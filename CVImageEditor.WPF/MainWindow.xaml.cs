@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CVImageEditor.WPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace CVImageEditor.WPF
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowVM();
         }
     }
 }

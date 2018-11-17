@@ -9,7 +9,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open Image"></MenuItem>
+                <MenuItem Header="_Open Image" Command="{Binding Path=OpenImageCommand}"></MenuItem>
                 <Separator/>
                 <MenuItem Header="_Exit"></MenuItem>
             </MenuItem>
