@@ -21,10 +21,27 @@ namespace CVImageEditor.WPF.Windows
     /// </summary>
     public partial class ThresholdingDialog : System.Windows.Window
     {
-        public ThresholdingDialog(Mat targetImage)
-        {
-            InitializeComponent();
-            this.DataContext = new ThresholdingDialogVM(targetImage);
-        }
-    }
+
+		#region PROPS
+
+		#endregion
+
+		#region PROPFULLS
+
+		#endregion
+
+		#region CTORS
+
+		public ThresholdingDialog(Mat targetImage)
+		{
+			InitializeComponent();
+			this.DataContext = new ThresholdingDialogVM(targetImage);
+		}
+		#endregion
+
+		#region METHODS
+
+		#endregion
+
+	}
 }

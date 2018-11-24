@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="CVImageEditor.WPF.Controls.DjLabelSlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CVImageEditor.WPF.Controls"
+             mc:Ignorable="d" 
+			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+			 Name="ControlBase"
+             d:DesignHeight="20" d:DesignWidth="400">
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="1.5*"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Label Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"
+			   Content="{Binding Path=LabelText, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Label>
+		<Slider Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+				Minimum="{Binding Path=SliderMinValue, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				Maximum="{Binding Path=SliderMaxValue, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				IsSnapToTickEnabled="True"
+				Name="ValueSlider"
+				TickFrequency="{Binding Path=SliderIncrementValue, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				Value="{Binding Path=SliderValue, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="ValueChanged">
+					<i:InvokeCommandAction Command="{Binding Path=SliderValueChanged, ElementName=ControlBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Slider>
+		<Label Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" 
+			   Content="{Binding ElementName=ValueSlider, Path=Value}" ContentStringFormat="{}{0:#}"></Label>
+		
+	</Grid>
+</UserControl>

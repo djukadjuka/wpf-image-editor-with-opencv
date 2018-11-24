@@ -5,10 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CVImageEditor.WPF.Windows"
         mc:Ignorable="d"
+		xmlns:cc="clr-namespace:CVImageEditor.WPF.Controls"
         Title="ThresholdingDialog" Height="450" Width="800">
     <Grid>
-        <Image Source="{Binding TargetImageSource}" 
+        <!--#region MAIN REGION DEFINITIONS-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <Image Grid.Row="0"
+               Source="{Binding TargetImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                HorizontalAlignment="Stretch" 
                VerticalAlignment="Stretch"/>
+
+		<!--#region CONTROLS GRID-->
+        <Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<!--#region SLIDER GRID-->
+			<Grid Grid.Column="0">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<cc:DjLabelSlider Grid.Row="0" LabelText="Block Size" 
+								  SliderMinValue="3" 
+								  SliderMaxValue="300" 
+								  SliderIncrementValue="2"
+								  SliderValue="{Binding BlockSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								  SliderValueChanged="{Binding AdaptiveThreshold}"></cc:DjLabelSlider>
+				<cc:DjLabelSlider Grid.Row="1" LabelText="C" 
+								  SliderMinValue="-255" 
+								  SliderMaxValue="255" 
+								  SliderIncrementValue="1"
+								  SliderValue="{Binding C, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								  SliderValueChanged="{Binding AdaptiveThreshold}"></cc:DjLabelSlider>
+			</Grid>
+			<!--#endregion-->
+			<!--#region CHECKBOX REGION-->
+			<!--#endregion-->
+        </Grid>
+		<!--#endregion-->
     </Grid>
 </Window>

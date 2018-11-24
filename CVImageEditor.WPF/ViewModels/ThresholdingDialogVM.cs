@@ -1,10 +1,12 @@
-﻿using CVImageEditor.WPF.Model;
+﻿using CVImageEditor.WPF.Commands;
+using CVImageEditor.WPF.Model;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace CVImageEditor.WPF.ViewModels
@@ -61,20 +63,65 @@ namespace CVImageEditor.WPF.ViewModels
                 OnPropertyChanged("TargetImageSource");
             }
         }
+		
+		private double _c;
+		public double C
+		{
+			get
+			{
+				return _c;
+			}
+			set
+			{
+				_c = value;
+				OnPropertyChanged("C");
+			}
+		}
+		
+		private double _blockSize;
+		public double BlockSize
+		{
+			get
+			{
+				return _blockSize;
+			}
+			set
+			{
+				_blockSize = value;
+				OnPropertyChanged("BlockSize");
+			}
+		}
+		
+		#endregion
 
-        #endregion
-
-        #region CTORS
-        public ThresholdingDialogVM(Mat image)
+		#region CTORS
+		public ThresholdingDialogVM(Mat image)
         {
+			_blockSize = 3;
+			_c = 0;
             ParentImage = image;
             TargetImage = ParentImage.Clone();
         }
-        #endregion
+		#endregion
 
-        #region METHODS
+		#region METHODS
+		private ICommand _adaptiveThreshold;
+		public ICommand AdaptiveThreshold
+		{
+			get
+			{
+				if(_adaptiveThreshold == null)
+				{
+					_adaptiveThreshold = new RelayCommand(x => AdaptiveThresholdFunction());
+				}
+				return _adaptiveThreshold;
+			}
+		}
+		private void AdaptiveThresholdFunction()
+		{
+			TargetImage = LIB.Core.Operations.Parameterized.AdaptiveThresholdImage(ParentImage, (int)BlockSize, (int)C);
+		}
 
-        #endregion
-
-    }
+		#endregion
+	}
 }
