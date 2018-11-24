@@ -7,18 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
+        <!--#region MAIN MENU-->
         <Menu DockPanel.Dock="Top">
+            <!--#region FILE MENU-->
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Image" Command="{Binding Path=OpenImageCommand}"></MenuItem>
                 <Separator/>
                 <MenuItem Header="_Exit"></MenuItem>
             </MenuItem>
-        </Menu>
-        <Grid DockPanel.Dock="Bottom">
-            <!--Source="{Binding MainImage}"-->
-            <Image Source="{Binding MainImageSource}">
-            </Image>
+            <!--#endregion-->
             
+            <!--#region EDIT MENU-->
+            <MenuItem Header="_Edit" IsEnabled="{Binding ImageExists}">
+                <MenuItem Header="_Unparameterized">
+                    <Menu>
+                        <MenuItem Header="_Grayscale" Command="{Binding Path=GrayscaleCommand}"></MenuItem>
+                    </Menu>
+                </MenuItem>
+            </MenuItem>
+            <!--#endregion-->
+
+        </Menu>
+        <!--#endregion-->
+        <Grid DockPanel.Dock="Bottom">
+            
+            <Image Source="{Binding MainImageSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
         </Grid>
     </DockPanel>
 </Window>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,13 @@ namespace CVImageEditor.LIB.Core
 {
     public class ImageUtilities
     {
-        public static ImageSource CreateImageSourceFromImage(Image image)
+        public static ImageSource CreateImageSourceFromMat(Mat image)
         {
+            Bitmap bitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(image);
             byte[] byteArray;
-            using (MemoryStream stream = new MemoryStream())
+            using(MemoryStream stream = new MemoryStream())
             {
-                image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                bitmap.Save(stream, ImageFormat.Bmp);
                 stream.Close();
 
                 byteArray = stream.ToArray();

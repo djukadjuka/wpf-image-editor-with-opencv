@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\ImageUtilities.cs" />
+    <Compile Include="Core\Operations\Unparameterized.cs" />
     <Compile Include="Core\Sandbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

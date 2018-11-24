@@ -20,12 +20,25 @@ namespace CVImageEditor.WPF.Model
     {
 
         #region PROPS
-        public Bitmap MainImage { get; set; }
-        public Mat MainImageMat { get; set; }
 
+        public bool ImageExists { get => MainImageMat != null; }
         #endregion
 
         #region PROPFULLS
+        private Mat _mainImageMat;
+        public Mat MainImageMat
+        {
+            get
+            {
+                return _mainImageMat;
+            }
+            set
+            {
+                _mainImageMat = value;
+                MainImageSource = LIB.Core.ImageUtilities.CreateImageSourceFromMat(_mainImageMat);
+            }
+        }
+        
         private ImageSource _mainImageSource;
         public ImageSource MainImageSource
         {
@@ -37,6 +50,7 @@ namespace CVImageEditor.WPF.Model
             {
                 _mainImageSource = value;
                 OnPropertyChanged("MainImageSource");
+                OnPropertyChanged("ImageExists");
             }
         }
 
@@ -77,11 +91,26 @@ namespace CVImageEditor.WPF.Model
             }
             filename = openFileDialog.FileName;
             
-            // TODO: use path to load image here
             MainImageMat = new Mat(filename);
-            MainImage = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(MainImageMat);
-            MainImageSource = LIB.Core.ImageUtilities.CreateImageSourceFromImage(MainImage);
         }
+
+        private ICommand _grayscaleCommand;
+        public ICommand GrayscaleCommand
+        {
+            get
+            {
+                if(_grayscaleCommand == null)
+                {
+                    _grayscaleCommand = new RelayCommand(x => GrayscaleCommandFunction());
+                }
+                return _grayscaleCommand;
+            }
+        }
+        public void GrayscaleCommandFunction()
+        {
+            MainImageMat = LIB.Core.Operations.Unparameterized.GrayscaleImage(MainImageMat);
+        }
+
 
         #endregion
     }
