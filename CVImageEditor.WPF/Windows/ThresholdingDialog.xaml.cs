@@ -1,5 +1,5 @@
-﻿using CVImageEditor.WPF.Model;
-using CVImageEditor.WPF.ViewModels;
+﻿using CVImageEditor.WPF.ViewModels;
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CVImageEditor.WPF
+namespace CVImageEditor.WPF.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ThresholdingDialog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ThresholdingDialog : System.Windows.Window
     {
-        public MainWindow()
+        public ThresholdingDialog(Mat targetImage)
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM();
+            this.DataContext = new ThresholdingDialogVM(targetImage);
         }
     }
 }

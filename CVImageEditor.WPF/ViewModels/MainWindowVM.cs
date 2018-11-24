@@ -1,4 +1,6 @@
 ﻿using CVImageEditor.WPF.Commands;
+using CVImageEditor.WPF.Model;
+using CVImageEditor.WPF.Windows;
 using Microsoft.Win32;
 using OpenCvSharp;
 using System;
@@ -14,7 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace CVImageEditor.WPF.Model
+namespace CVImageEditor.WPF.ViewModels
 {
     public class MainWindowVM : BaseModel
     {
@@ -111,7 +113,28 @@ namespace CVImageEditor.WPF.Model
             MainImageMat = LIB.Core.Operations.Unparameterized.GrayscaleImage(MainImageMat);
         }
 
-
+        private ICommand _thresholdingCommand;
+        public ICommand ThresholdingCommand
+        {
+            get
+            {
+                if(_thresholdingCommand == null)
+                {
+                    _thresholdingCommand = new RelayCommand(x => ThresholdingCommandFunction());
+                }
+                return _thresholdingCommand;
+            }
+        }
+        public void ThresholdingCommandFunction()
+        {
+            if(MainImageMat.Channels() != 1)
+            {
+                MessageBox.Show("Image must be grayscaled first");
+                return;
+            }
+            ThresholdingDialog thresholdingDialog = new ThresholdingDialog(MainImageMat);
+            thresholdingDialog.ShowDialog();
+        }
         #endregion
     }
 }

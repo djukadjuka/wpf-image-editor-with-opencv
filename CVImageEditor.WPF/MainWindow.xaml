@@ -19,20 +19,23 @@
             
             <!--#region EDIT MENU-->
             <MenuItem Header="_Edit" IsEnabled="{Binding ImageExists}">
+                <!--#region UNPARAMETERIZED-->
                 <MenuItem Header="_Unparameterized">
-                    <Menu>
-                        <MenuItem Header="_Grayscale" Command="{Binding Path=GrayscaleCommand}"></MenuItem>
-                    </Menu>
+                    <MenuItem Header="_Grayscale" Command="{Binding Path=GrayscaleCommand}"/>
                 </MenuItem>
+                <!--#endregion-->
+                <!--#region PARAMETERIZED-->
+                <MenuItem Header="_Parameterized">
+                    <MenuItem Header="_Thresholding" Command="{Binding Path=ThresholdingCommand}"/>
+                </MenuItem>
+                <!--#endregion-->
             </MenuItem>
             <!--#endregion-->
 
         </Menu>
         <!--#endregion-->
         <Grid DockPanel.Dock="Bottom">
-            
             <Image Source="{Binding MainImageSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
         </Grid>
     </DockPanel>
 </Window>
